@@ -13,9 +13,8 @@ const database = {
     {
         id: '123',
         name: 'John',
-        // email: 'john@gmail.com',
-        email: 'j',
-        password: '1',
+        email: 'john@gmail.com',
+        password: 'cookies',
         entries: 0,
         joined: new Date()
     },
@@ -28,11 +27,11 @@ const database = {
         joined: new Date()
     }
     ],
-    login : {
-        id: '987',
-        hash: '',
-        email: 'john@gmail.com'
-    }
+    // login : {
+    //     id: '987',
+    //     hash: '',
+    //     email: 'john@gmail.com'
+    // }
 }
 
 app.get('/', (req, res) => {
@@ -42,8 +41,9 @@ app.get('/', (req, res) => {
 app.post('/signin', (req, res) => {
     if (req.body.email === database.users[0].email && req.body.password === database.users[0].password) {
         res.json(database.users[0])
+        // res.json('Yes')
     } else {
-        res.status(400).json('Nope')
+        res.status(400).json('Something went wrong')
     };
 })
 

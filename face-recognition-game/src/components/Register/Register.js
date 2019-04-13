@@ -27,9 +27,9 @@ class Register extends Component {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                name: this.state.name,
                 email: this.state.email,
-                password: this.state.password
+                password: this.state.password,
+                name: this.state.name
             })
         })
             .then(response => response.json())
@@ -41,7 +41,6 @@ class Register extends Component {
             })
     }
 
-
     render() {
         return (
             <article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
@@ -51,21 +50,21 @@ class Register extends Component {
                             <legend className="f2 fw6 ph0 mh0">Register</legend>
                             <div className="mt3">
                                 <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
-                                <input onClick={this.onNameChange} 
+                                <input onChange={this.onNameChange} 
                                 className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" 
                                 name="name" 
                                 id="name" />
                             </div>
                             <div className="mt3">
                                 <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
-                                <input onClick={this.onEmailChange} 
+                                <input onChange={this.onEmailChange} 
                                 className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" 
                                 name="email-address" 
                                 id="email-address" />
                             </div>
                             <div className="mv3">
                                 <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
-                                <input onClick={this.onPasswordChange} 
+                                <input onChange={this.onPasswordChange} 
                                 className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" 
                                 name="password" 
                                 id="password" />
