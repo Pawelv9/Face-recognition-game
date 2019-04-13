@@ -3,13 +3,14 @@ const bodyParser = require ('body-parser')
 const cors = require ('cors')
 const bcrypt = require('bcrypt-nodejs');
 const knex = require('knex');
+const PASSWORD = require('./key')
 
 const db = knex({
     client: 'pg',
     connection: {
         host: '127.0.0.1',
         user: 'postgres',
-        password: '',
+        password: PASSWORD,
         database: 'face'
     }
 });
@@ -64,7 +65,6 @@ app.post('/register', (req, res) => {
         })
     .then(trx.commit)
     .catch(err => res.status(400).json('unable to register'))
-    // res.json(database.users[database.users.length-1])
     })
 })
 
