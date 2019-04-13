@@ -9,9 +9,10 @@ import Clarifai from 'clarifai';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
+import API_KEY from './.env'
 
 const app = new Clarifai.App({
-  apiKey: ""
+  apiKey: API_KEY
 });
 
 const particlesOptions = {
