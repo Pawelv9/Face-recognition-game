@@ -80,7 +80,7 @@ class App extends Component {
   onPictureSubmit = () => {
     this.setState({imageUrl: this.state.input})
           // fetch('http://localhost:8000/imageurl', {
-          fetch('https://git.heroku.com/evening-plains-33840.git/imageurl', {
+    fetch('https://evening-plains-33840.herokuapp.com/imageurl', {
           method: 'post',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -91,7 +91,7 @@ class App extends Component {
     .then(response => {
       if (response) {
         // fetch('http://localhost:8000/image', {
-        fetch('https://git.heroku.com/evening-plains-33840.git/image', {
+        fetch('https://evening-plains-33840.herokuapp.com/image', {
           method: 'put',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
