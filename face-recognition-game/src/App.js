@@ -5,15 +5,10 @@ import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import Particles from 'react-particles-js';
-import Clarifai from 'clarifai';
+
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
-import API_KEY from './key'
-
-const app = new Clarifai.App({
-  apiKey: API_KEY
-});
 
 const initialState = {
   input: '',
@@ -84,7 +79,14 @@ class App extends Component {
   
   onPictureSubmit = () => {
     this.setState({imageUrl: this.state.input})
-    app.models.predict("a403429f2ddf4b49b307e318f00e528b", this.state.input)
+        fetch('http://localhost:8000/imageurl', {
+          method: 'post',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            input: this.state.input
+        })
+      })
+    .then(response => response.json())
     .then(response => {
       if (response) {
         fetch('http://localhost:8000/image', {
@@ -100,7 +102,7 @@ class App extends Component {
         })
       }
       this.displayFaceBox(this.calculateFaceLocation(response))
-    }).catch(error => console.log(error));
+    }).catch(error => console.log(error))
   }
 
   onRouteChange = (route) => {
