@@ -3,7 +3,7 @@ const bodyParser = require ('body-parser')
 const cors = require ('cors')
 const bcrypt = require('bcrypt-nodejs');
 const knex = require('knex');
-const PASSWORD = require('./key')
+const key = require('./key')
 const register = require('./controllers/register')
 const signin = require('./controllers/signin')
 const profile = require('./controllers/profile')
@@ -14,7 +14,7 @@ const db = knex({
     connection: {
         host: '127.0.0.1',
         user: 'postgres',
-        password: PASSWORD,
+        password: key.PASSWORD,
         database: 'face'
     }
 });
